@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "outDir": "../dist/out-tsc",
+    "types": ["node"]
+  },
+  "include": [
+    "../src/**/*.ts",
+    "../src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
+// This file is used to configure TypeScript for the application code in a React project.
+// It extends the base TypeScript configuration and specifies options for JSX, output directory, and type definitions.
