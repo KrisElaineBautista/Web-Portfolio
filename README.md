@@ -26,6 +26,8 @@ This portfolio showcases my projects, resume, and certifications.
 
 - Javascript, Firebase
 - **Deployment:** Netlify
-- kriselainebautista.netlify.app
+
+  Website: kriselainebautista.netlify.app
+  
 
 
