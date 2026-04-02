@@ -1,56 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  /* Your Palette */
+  --nav-bg: #26a1ff;      /* Muted Blue */
+  --nav-hover: #91C4C3;   /* Seafoam Blue */
+  --text-white: #FFFFFF;
+  --text-dark: #334155;
+  --toggle-bg: #CBDCEB;   /* Footer-ish color for slider */
+  --btn-yellow: #FEE2AD;  /* Button Background */
+  --btn-blue: #647FBC;    /* Button Font Color */
+}
+
+/* Dark mode adjustments for your specific palette */
+.dark {
+  --nav-bg: #4d0da0;      /* Darker version of your blue */
+  --nav-hover: #1e1283;
+  --text-white: #e202ff;
+}
+
 .navbar {
-  padding: 1rem 2rem;
-  background: var(--card);
+  padding: 1rem 10%;
+  background: var(--nav-bg);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-.navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.navbar-profile {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.name-logo {
+  color: var(--text-white);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
 }
 
 .navbar-title {
   text-decoration: none;
-  color: var(--text);
-  font-weight: bold;
-  font-size: 1.2rem;
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.5rem;
 }
 
 .nav-link {
-  color: var(--text);
+  color: var(--text-white);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Seafoam Hover Effect */
+.nav-link:hover, .nav-link.active {
+  background-color: var(--nav-hover);
+  color: var(--text-dark);
+}
+
+/* Dark Mode Toggle - Custom Pastel Look */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  margin-left: 1rem;
+}
+
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--toggle-bg);
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 4px; bottom: 4px;
+  background-color: var(--btn-yellow); /* Using your butter yellow for the knob */
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--btn-blue); /* Using your button blue when active */
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Mobile Icon */
+.menu-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--text-white);
+  margin: 5px;
+  transition: 0.3s;
+}
+
+@media (max-width: 900px) {
+  .navbar { padding: 1rem 5%; }
+  .mobile-menu-button { display: block; background: none; border: none; }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    flex-direction: column;
+    padding: 2rem 0;
+    transform: translateY(-150%);
+    transition: 0.4s ease;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .navbar-links.open { transform: translateY(0); }
+}
+/* NAVBAR CONTAINER */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 10%;
+  background-color: var(--nav-bg);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(10px); /* Makes it look modern */
+}
+
+/* LOGO / TITLE */
+.navbar-title {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFFBF1; /* Keep logo white/linen for high contrast against blue */
+  letter-spacing: 1px;
+}
+
+/* LINKS GROUP */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* INDIVIDUAL NAV LINK */
+.nav-link {
+  text-decoration: none;
+  color: #FFFBF1; /* Linen color for better visibility on the blue nav */
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
   padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
+  border-radius: 8px;
 }
 
 .nav-link:hover {
-  background: var(--accent, #e0e7ff);
-  color: var(--accent-text, #3730a3);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
 }
 
 .nav-link.active {
-  background: var(--accent, #6366f1);
-  color: #fff;
+  background: var(--card); /* Uses your Sage/Navy variable */
+  color: var(--text);      /* Adapts text color based on theme */
+  box-shadow: var(--shadow);
+}
+
+/* THEME TOGGLE SWITCH */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--btn-bg);
+  transition: .4s;
+  border-radius: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+input:checked + .slider {
+  background-color: var(--btn-text);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.moon, .sun {
+  font-size: 12px;
+  user-select: none;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 900px) {
+  .navbar-links {
+    display: none; /* Add your burger menu logic here if needed */
+  }
 }

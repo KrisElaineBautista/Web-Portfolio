@@ -1,0 +1,159 @@
+/* Container for the whole Home section */
+.home-container {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 5rem 10% 2rem 10%; 
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  /* DARK MODE ADAPTIVE */
+  background-color: var(--bg); 
+  transition: background 0.3s ease;
+}
+
+/* Left side text content */
+.home-content {
+  flex: 1.5; 
+  min-width: 400px;
+  text-align: left;
+}
+
+/* Heading: "Hi, I'm Kris Elaine" */
+.home-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  /* DARK MODE ADAPTIVE */
+  color: var(--text); 
+  white-space: nowrap; 
+}
+
+.name-highlight {
+  /* DARK MODE ADAPTIVE: Stays Steel Blue or follows primary */
+  color: var(--btn-text); 
+  margin-left: 12px;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  /* DARK MODE ADAPTIVE: Follows Muted Blue variable */
+  color: var(--nav-bg); 
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.description {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  /* DARK MODE ADAPTIVE */
+  color: var(--text); 
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+/* Button Styling */
+.button-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.btn-primary {
+  /* DARK MODE ADAPTIVE */
+  background-color: var(--btn-bg); 
+  color: var(--btn-text);         
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  /* DARK MODE ADAPTIVE */
+  border: 2px solid var(--btn-text);
+  color: var(--btn-text);
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--border);
+}
+
+/* Right side Image Circle */
+.home-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-circle {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  /* DARK MODE ADAPTIVE */
+  background: var(--card); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border: 10px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Skills Section Integration */
+.skills-wrapper {
+  margin-top: 3rem;
+  /* DARK MODE ADAPTIVE */
+  border-top: 2px solid var(--border);
+  padding-top: 2rem;
+  width: 100%;
+}
+
+.skills-wrapper h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  /* DARK MODE ADAPTIVE */
+  color: var(--btn-text);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .home-content h1 {
+    font-size: 2.5rem;
+    white-space: normal; 
+  }
+  .image-circle {
+    width: 280px;
+    height: 280px;
+  }
+}

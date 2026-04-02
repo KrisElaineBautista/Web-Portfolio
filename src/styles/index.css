@@ -1,106 +1,139 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+/* 1. MASTER VARIABLES */
+:root {
+  /* Light Mode (Coastal Palette) */
+  --bg: #FFFBF1;
+  --nav-bg: #80A1BA;
+  --card: #a6ddfd;
+  --text: #334155;
+  --border: #CBDCEB;
+  --btn-bg: #99c3e6;
+  --btn-text: #0c0c0ca9;
+  --footer-bg: hsl(207, 86%, 80%);
+  
+  /* DARK SHADOW for White/Light backgrounds */
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+  --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* 2. DARK MODE OVERRIDES */
+body.dark {
+  --bg: #39065A;
+  --text: #EA0599;
+  --card: #6A0572;
+  --border: #9A0F98;
+  --btn-bg: #EA0599;
+  --btn-text: #ffffff;
+  --footer-bg: #6A0572; 
+  
+  /* WHITE/GLOW SHADOW for Dark backgrounds */
+  --shadow: 0 10px 30px rgb(0, 0, 0); 
+  --hover-shadow: 0 15px 40px rgba(255, 255, 255, 0.15);
+}
+
+/* 3. CORE RESET & BODY */
+html, body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-section {
-  padding: 3rem 2rem;
-  max-width: 960px;
-  margin: auto;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 0.5rem;
-}
-
-.project-card {
-  background: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 12px;
-  padding: 1.5rem;
+  padding: 0;
   width: 100%;
-  max-width: 320px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Poppins', sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
-.project-card:hover {
+/* 4. SHARED PAGE LAYOUT */
+section, .page-container {
+  padding: 5rem 10% 2rem 10%;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 5. TITLES & HEADERS */
+h1, h2, h3 {
+  margin: 0;
+  color: var(--btn-text);
+}
+
+.title-underline {
+  width: 60px;
+  height: 4px;
+  background: var(--nav-bg);
+  margin-bottom: 2rem;
+  border-radius: 2px;
+}
+
+/* 6. GLOBAL BUTTON STYLES */
+.btn-primary {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow); /* Added shadow to button too */
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--btn-text);
+  color: var(--btn-text);
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--border);
+}
+
+/* 7. SHARED CARD STYLE */
+.content-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  /* Updated to use our dynamic shadow variables */
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-card:hover {
   transform: translateY(-5px);
+  box-shadow: var(--hover-shadow);
 }
 
-.project-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.contact-form {
+/* Fix for footer positioning */
+#root {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width: 500px;
-  margin-top: 1rem;
+  min-height: 100vh;
+}
+.footer-link {
+  transition: color 0.2s ease;
 }
 
-.contact-form input,
-.contact-form textarea {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  background: #fff;
-}
-
-.contact-form button {
-  padding: 0.75rem;
-  border: none;
-  background-color: #333;
-  color: white;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.contact-form button:hover {
-  background-color: #555;
-}
-:root {
-  --bg: #f9f9f9;
-  --text: #333;
-  --card: #fff;
-  --border: #eaeaea;
-  --shadow: rgba(0, 0, 0, 0.05);
-}
-
-body.dark {
-  --bg: #121212;
-  --text: #eee;
-  --card: #1e1e1e;
-  --border: #333;
-  --shadow: rgba(255, 255, 255, 0.05);
-}
-
-
-.project-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 14px var(--shadow);
-}
-
-body {
-  --bg: #ffffff;
-  --text: #1a1a1a;
-  --card: #f8f9fa;
-  --border: #e5e7eb;
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  transition: background 0.3s, color 0.3s;
+.footer-link:hover {
+  color: var(--btn-text) !important; /* Uses your theme's primary accent color */
 }
