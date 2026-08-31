@@ -14,28 +14,28 @@ const certifications: Certification[] = [
     name: 'ISC2CC - Certified Cybersecurity - Domain 3: Access Control Concepts',
     issuer: 'ISC2',
     date: 'March 16, 2026',
-    link: '#',
+    link: 'https://drive.google.com/file/d/1F_SMs6TCW38CSiOpfNrYYUM_tg2G7pAq/view?usp=drive_link',
     icon: 'fa-solid fa-lock',
   },
   {
     name: 'ISC2CC - Certified Cybersecurity - Domain 2: Incident Response, BC & DR Concepts',
     issuer: 'ISC2',
     date: 'March 16, 2026',
-    link: '#',
+    link: 'https://drive.google.com/file/d/1gjJiRCWv5QjMyGcFG3Ft88Lkzy1da0jL/view?usp=drive_link',
     icon: 'fa-solid fa-lock',
   },
   {
     name: 'ISC2CC - Certified Cybersecurity - Domain 1: Security Principles',
     issuer: 'ISC2',
     date: 'March 15, 2026',
-    link: '#',
+    link: 'https://drive.google.com/file/d/159q8H1vu5s5Gez4_Lg9tvSbXtUZaNGOn/view?usp=drive_link',
     icon: 'fa-solid fa-lock',
   },
   {
     name: 'ISC2CC - Certified Cybersecurity - Pre-Assessment',
     issuer: 'ISC2',
     date: 'March 15, 2026',
-    link: '#',
+    link: 'https://drive.google.com/file/d/1mGNvLRli2hM3g6ZUdc-_9A26iHl-GXun/view?usp=drive_link',
     icon: 'fa-solid fa-lock',
   },
   {
@@ -50,7 +50,7 @@ const certifications: Certification[] = [
     issuer: 'Coursera / Google',
     date: 'March 6, 2026',
     link: 'https://www.coursera.org/account/accomplishments/professional-cert/1WY04M29KPR6',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg',
+    icon: '',
   },
   {
     name: 'Installing and Configuring Computer Systems',
@@ -64,7 +64,7 @@ const certifications: Certification[] = [
     issuer: 'Google Education',
     date: 'January 21, 2026',
     link: 'https://edu.google.accredible.com/ada3fa57-6749-4187-a67d-36be0f426b39#acc.jfICRyU7',
-    icon: 'https://www.gstatic.com/lamda/images/favicon_v1_150160d1398251f5a901.svg',
+    icon: '',
   },
   {
     name: 'Introduction to Cybersecurity',
@@ -170,6 +170,27 @@ const certifications: Certification[] = [
     date: 'November 1, 2023',
     link: 'https://courses.cognitiveclass.ai/certificates/20349553d9af4f3cb2361c2fce751b2a',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+  },
+  {
+    name: 'Google AI',
+    issuer: 'Coursera',
+    date: 'April 26, 2026',
+    link: 'https://coursera.org/share/2960a0dd16c142124b6da9fef6a36634',
+    icon: '',
+  },
+  {
+    name: 'Google Data Analytics: Foundations: Data, Data, Everywhere',
+    issuer: 'Coursera',
+    date: 'March 6, 2026',
+    link: 'https://www.coursera.org/account/accomplishments/verify/R7RTZGNE9X25',
+    icon: '',
+  },
+  {
+    name: 'Google IT Support',
+    issuer: 'Coursera',
+    date: 'July 2026',
+    link: 'https://coursera.org/share/d7a60a3197e633320fe470c1d4d14ea8',
+    icon: '',
   },
 ];
 

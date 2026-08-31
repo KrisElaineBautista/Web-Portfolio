@@ -10,9 +10,8 @@ import NotFound from './pages/NotFound';
 import Certifications from './pages/Certifications';
 
 import './styles/index.css'; // Assuming you have a CSS file for global styles
-import './styles/contact.css'; // Assuming you have a CSS file for dark mode styles
 import AboutMe from './pages/AboutMe';
-import Resume from './pages/Resume';
+
 const App = () => {
   return (
     <>
@@ -22,7 +21,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/about" element={<AboutMe />} />
-        <Route path="/resume" element={<Resume />} />
+     
         <Route path="/projects" element={<Projects />} />
 
         <Route path="/contact" element={<Contact />} />

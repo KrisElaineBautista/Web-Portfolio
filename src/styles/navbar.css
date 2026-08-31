@@ -1,246 +1,871 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-
-:root {
-  /* Your Palette */
-  --nav-bg: #26a1ff;      /* Muted Blue */
-  --nav-hover: #91C4C3;   /* Seafoam Blue */
-  --text-white: #FFFFFF;
-  --text-dark: #334155;
-  --toggle-bg: #CBDCEB;   /* Footer-ish color for slider */
-  --btn-yellow: #FEE2AD;  /* Button Background */
-  --btn-blue: #647FBC;    /* Button Font Color */
-}
-
-/* Dark mode adjustments for your specific palette */
-.dark {
-  --nav-bg: #4d0da0;      /* Darker version of your blue */
-  --nav-hover: #1e1283;
-  --text-white: #e202ff;
-}
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar {
-  padding: 1rem 10%;
-  background: var(--nav-bg);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  font-family: 'Inter', sans-serif;
-  transition: background 0.3s ease;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+  width: 100%;
+  min-height: 72px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 9%;
+
+  /* LIGHT GLASS */
+  background: color-mix(
+    in srgb,
+    var(--nav-bg) 88%,
+    white 12%
+  );
+
+  border-bottom: 1px solid
+    color-mix(
+      in srgb,
+      var(--border) 70%,
+      white 30%
+    );
+
+  box-shadow:
+    0 4px 20px rgba(51, 65, 85, 0.12);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    background 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+
+/* =========================================================
+   DARK NAVBAR
+========================================================= */
+
+body.dark .navbar {
+  background: rgba(57, 6, 90, 0.82);
+
+  border-bottom:
+    1px solid rgba(234, 5, 153, 0.25);
+
+  box-shadow:
+    0 4px 25px rgba(0, 0, 0, 0.35),
+    0 1px 12px rgba(234, 5, 153, 0.08);
+}
+
+
+/* =========================================================
+   LOGO / NAME
+========================================================= */
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-title {
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
 }
 
 .name-logo {
-  color: var(--text-white);
-  font-weight: 800;
-  font-size: 1.5rem;
-  letter-spacing: -0.5px;
-}
-
-.navbar-title {
-  text-decoration: none;
-}
-
-.navbar-links {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-link {
-  color: var(--text-white);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-/* Seafoam Hover Effect */
-.nav-link:hover, .nav-link.active {
-  background-color: var(--nav-hover);
-  color: var(--text-dark);
-}
-
-/* Dark Mode Toggle - Custom Pastel Look */
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 26px;
-  margin-left: 1rem;
-}
-
-.toggle-switch input { opacity: 0; width: 0; height: 0; }
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: var(--toggle-bg);
-  transition: .4s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 18px; width: 18px;
-  left: 4px; bottom: 4px;
-  background-color: var(--btn-yellow); /* Using your butter yellow for the knob */
-  transition: .4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: var(--btn-blue); /* Using your button blue when active */
-}
-
-input:checked + .slider:before {
-  transform: translateX(24px);
-}
-
-/* Mobile Icon */
-.menu-icon span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background: var(--text-white);
-  margin: 5px;
-  transition: 0.3s;
-}
-
-@media (max-width: 900px) {
-  .navbar { padding: 1rem 5%; }
-  .mobile-menu-button { display: block; background: none; border: none; }
-
-  .navbar-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--nav-bg);
-    flex-direction: column;
-    padding: 2rem 0;
-    transform: translateY(-150%);
-    transition: 0.4s ease;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .navbar-links.open { transform: translateY(0); }
-}
-/* NAVBAR CONTAINER */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 10%;
-  background-color: var(--nav-bg);
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
-  backdrop-filter: blur(10px); /* Makes it look modern */
-}
-
-/* LOGO / TITLE */
-.navbar-title {
-  text-decoration: none;
   font-size: 1.5rem;
   font-weight: 800;
-  color: #FFFBF1; /* Keep logo white/linen for high contrast against blue */
-  letter-spacing: 1px;
+
+  letter-spacing: -0.025em;
+
+  color: var(--btn-text);
+
+  white-space: nowrap;
+
+  transition:
+    color 0.4s ease,
+    text-shadow 0.4s ease,
+    transform 0.25s ease;
 }
 
-/* LINKS GROUP */
-.navbar-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-/* INDIVIDUAL NAV LINK */
-.nav-link {
-  text-decoration: none;
-  color: #FFFBF1; /* Linen color for better visibility on the blue nav */
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-}
-
-.nav-link:hover {
-  background: rgba(255, 255, 255, 0.15);
+.name-logo:hover {
   transform: translateY(-1px);
 }
 
-.nav-link.active {
-  background: var(--card); /* Uses your Sage/Navy variable */
-  color: var(--text);      /* Adapts text color based on theme */
-  box-shadow: var(--shadow);
+
+/* =========================================================
+   DARK LOGO
+========================================================= */
+
+body.dark .name-logo {
+  color: #ffffff;
+
+  text-shadow:
+    0 0 10px rgba(234, 5, 153, 0.45),
+    0 0 25px rgba(234, 5, 153, 0.18);
 }
 
-/* THEME TOGGLE SWITCH */
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
+
+/* =========================================================
+   DESKTOP NAV LINKS
+========================================================= */
+
+.navbar-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.45rem;
 }
+
+
+/* =========================================================
+   INDIVIDUAL NAV LINK
+========================================================= */
+
+.nav-link {
+  position: relative;
+
+  color: var(--btn-text);
+
+  text-decoration: none;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  padding: 11px 16px;
+
+  border-radius: 10px;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   NAV LINK HOVER
+========================================================= */
+
+.nav-link:hover {
+  color: var(--btn-text);
+
+  background:
+    rgba(255, 255, 255, 0.18);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   ACTIVE LINK
+========================================================= */
+
+.nav-link.active {
+  color: var(--btn-text);
+
+  background:
+    rgba(255, 255, 255, 0.22);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   DARK ACTIVE LINK
+========================================================= */
+
+body.dark .nav-link.active {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(234, 5, 153, 0.30),
+      rgba(106, 5, 114, 0.55)
+    );
+
+  box-shadow:
+    0 4px 18px rgba(234, 5, 153, 0.18),
+    inset 0 0 0 1px
+      rgba(234, 5, 153, 0.18);
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
+
+.theme-toggle {
+  display: flex;
+
+  align-items: center;
+
+  margin-left: 0.6rem;
+}
+
+
+/* =========================================================
+   HIDE CHECKBOX
+========================================================= */
 
 .toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+  display: none;
 }
+
+
+/* =========================================================
+   TOGGLE SWITCH
+========================================================= */
+
+.toggle-switch {
+  position: relative;
+
+  display: block;
+
+  width: 56px;
+  height: 30px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   TOGGLE SLIDER
+========================================================= */
 
 .slider {
   position: absolute;
-  cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: var(--btn-bg);
-  transition: .4s;
-  border-radius: 34px;
+
+  inset: 0;
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
-  padding: 0 5px;
+
+  padding: 3px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.75);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.5);
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease;
 }
 
-.slider:before {
+
+/* =========================================================
+   TOGGLE CIRCLE
+========================================================= */
+
+.slider::before {
+  content: '';
+
   position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .4s;
+
+  width: 24px;
+  height: 24px;
+
+  left: 2px;
+  top: 2px;
+
   border-radius: 50%;
-  z-index: 2;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 2px 6px
+      rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
 }
 
-input:checked + .slider {
-  background-color: var(--btn-text);
+
+/* =========================================================
+   DARK TOGGLE
+========================================================= */
+
+.toggle-switch input:checked + .slider {
+  background:
+    #39065A;
+
+  border-color:
+    rgba(234, 5, 153, 0.5);
 }
 
-input:checked + .slider:before {
-  transform: translateX(26px);
+
+.toggle-switch input:checked + .slider::before {
+  transform:
+    translateX(26px);
+
+  background:
+    #EA0599;
+
+  box-shadow:
+    0 0 10px
+      rgba(234, 5, 153, 0.55);
 }
 
-.moon, .sun {
-  font-size: 12px;
-  user-select: none;
+
+/* =========================================================
+   TOGGLE ICONS
+========================================================= */
+
+.moon,
+.sun {
+  position: relative;
+
+  width: 23px;
+  height: 23px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+
+  color: #475569;
+
+  transition:
+    color 0.3s ease,
+    opacity 0.3s ease;
 }
 
-/* MOBILE RESPONSIVENESS */
-@media (max-width: 900px) {
-  .navbar-links {
-    display: none; /* Add your burger menu logic here if needed */
+
+.moon svg,
+.sun svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* =========================================================
+   DARK TOGGLE ICONS
+========================================================= */
+
+body.dark .moon,
+body.dark .sun {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   HAMBURGER BUTTON
+========================================================= */
+
+.navbar-hamburger {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   HAMBURGER LINES
+========================================================= */
+
+.navbar-hamburger span {
+  width: 25px;
+  height: 2.5px;
+
+  border-radius: 999px;
+
+  background:
+    var(--btn-text);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* =========================================================
+   HAMBURGER OPEN
+========================================================= */
+
+.navbar-hamburger.open span:nth-child(1) {
+  transform:
+    translateY(7.5px)
+    rotate(45deg);
+}
+
+
+.navbar-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+
+.navbar-hamburger.open span:nth-child(3) {
+  transform:
+    translateY(-7.5px)
+    rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE OVERLAY
+========================================================= */
+
+.navbar-mobile-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(0, 0, 0, 0.35);
+
+  backdrop-filter:
+    blur(3px);
+
+  -webkit-backdrop-filter:
+    blur(3px);
+
+  z-index: 1040;
+
+  animation:
+    overlayIn 0.25s ease;
+}
+
+
+/* =========================================================
+   DARK MOBILE OVERLAY
+========================================================= */
+
+body.dark .navbar-mobile-overlay {
+  background:
+    rgba(8, 0, 15, 0.65);
+}
+
+
+/* =========================================================
+   OVERLAY ANIMATION
+========================================================= */
+
+@keyframes overlayIn {
+
+  from {
+    opacity: 0;
   }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE PANEL
+========================================================= */
+
+.navbar-mobile-panel {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: min(78vw, 310px);
+
+  height: 100vh;
+
+  box-sizing: border-box;
+
+  padding:
+    5.5rem 1.75rem 2rem;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(
+        in srgb,
+        var(--nav-bg) 94%,
+        white 6%
+      ),
+      var(--nav-bg)
+    );
+
+  color:
+    var(--btn-text);
+
+  border-right:
+    1px solid var(--border);
+
+  box-shadow:
+    12px 0 40px
+      rgba(0, 0, 0, 0.18);
+
+  z-index: 1050;
+
+  overflow-y: auto;
+
+  transition:
+    background 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease;
+}
+
+
+/* =========================================================
+   DARK MOBILE PANEL
+========================================================= */
+
+body.dark .navbar-mobile-panel {
+  background:
+    linear-gradient(
+      145deg,
+      #39065A 0%,
+      #26002f 55%,
+      #190021 100%
+    );
+
+  border-right:
+    1px solid
+    rgba(234, 5, 153, 0.25);
+
+  box-shadow:
+    15px 0 45px
+      rgba(0, 0, 0, 0.5),
+
+    5px 0 25px
+      rgba(234, 5, 153, 0.08);
+}
+
+
+/* =========================================================
+   MOBILE NAV LINKS
+========================================================= */
+
+.mobile-nav-link {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding:
+    0.95rem 1rem;
+
+  margin-bottom:
+    0.25rem;
+
+  color:
+    var(--btn-text);
+
+  text-decoration:
+    none;
+
+  font-size:
+    1.05rem;
+
+  font-weight:
+    700;
+
+  border-radius:
+    10px;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* =========================================================
+   MOBILE LINK HOVER
+========================================================= */
+
+.mobile-nav-link:hover {
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  transform:
+    translateX(4px);
+}
+
+
+/* =========================================================
+   ACTIVE MOBILE LINK
+========================================================= */
+
+.mobile-nav-link.active {
+  color:
+    var(--btn-text);
+
+  background:
+    rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================================================
+   DARK ACTIVE MOBILE LINK
+========================================================= */
+
+body.dark .mobile-nav-link.active {
+  color:
+    #ffffff;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(234, 5, 153, 0.28),
+      rgba(106, 5, 114, 0.35)
+    );
+
+  box-shadow:
+    inset 3px 0 0 #EA0599;
+}
+
+
+/* =========================================================
+   MOBILE THEME
+========================================================= */
+
+.mobile-theme-toggle {
+  margin-top:
+    1.5rem;
+
+  padding-top:
+    1rem;
+
+  width:
+    100%;
+
+  border-top:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--border) 70%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    min-height:
+      64px;
+
+    padding:
+      0 1rem;
+
+    justify-content:
+      flex-start;
+
+    gap:
+      0.75rem;
+  }
+
+
+  /* Hamburger */
+
+  .navbar-hamburger {
+    display:
+      flex;
+
+    flex-shrink:
+      0;
+  }
+
+
+  /* Logo container */
+
+  .navbar-left {
+    flex:
+      1;
+
+    min-width:
+      0;
+  }
+
+
+  /* Mobile logo */
+
+  .name-logo {
+    font-size:
+      1.2rem;
+  }
+
+
+  /* Hide desktop links */
+
+  .navbar-links {
+    display:
+      none;
+  }
+
+}
+
+
+/* =========================================================
+   DESKTOP ONLY
+========================================================= */
+
+@media (min-width: 769px) {
+
+  .navbar-mobile-panel,
+  .navbar-mobile-overlay {
+    display:
+      none !important;
+  }
+
+}
+
+
+/* =========================================================
+   MEDIUM DESKTOP
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1100px) {
+
+  .navbar {
+    padding:
+      0 5%;
+  }
+
+  .name-logo {
+    font-size:
+      1.4rem;
+  }
+
+  .navbar-links {
+    gap:
+      0.2rem;
+  }
+
+  .nav-link {
+    font-size:
+      0.95rem;
+
+    padding:
+      10px 12px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .navbar {
+    padding:
+      0 0.75rem;
+  }
+
+
+  .name-logo {
+    font-size:
+      1.1rem;
+  }
+
+
+  .navbar-hamburger {
+    width:
+      38px;
+
+    height:
+      38px;
+  }
+
+
+  .navbar-mobile-panel {
+    width:
+      min(82vw, 290px);
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.nav-link:focus-visible,
+.mobile-nav-link:focus-visible,
+.navbar-hamburger:focus-visible,
+.toggle-switch:focus-within {
+  outline:
+    2px solid var(--btn-text);
+
+  outline-offset:
+    3px;
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .navbar,
+  .name-logo,
+  .nav-link,
+  .mobile-nav-link,
+  .navbar-hamburger span,
+  .slider,
+  .slider::before {
+    transition:
+      none !important;
+  }
+
+  .navbar-mobile-overlay {
+    animation:
+      none !important;
+  }
+
 }

@@ -1,4 +1,3 @@
-
 import '../styles/index.css'; 
 import pic from '../assets/pic.png';
 import { useNavigate } from "react-router-dom";
@@ -26,54 +25,136 @@ const skillIcons = [
 ];
 
 const Home = () => {
-  // Move the hook call inside the component!
   const navigate = useNavigate();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 160px)' }}>
+      <style>{`
+        .home-hero {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 4rem;
+          flex-wrap: wrap;
+          margin-bottom: 4rem;
+        }
+        .home-hero-text {
+          flex: 1.5;
+          min-width: 320px;
+        }
+        .home-hero-photo-wrap {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          min-width: 220px;
+        }
+        .home-photo-circle {
+          width: 250px;
+          height: 250px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 8px solid var(--border);
+          box-shadow: 0 20px 40px var(--shadow);
+          flex-shrink: 0;
+        }
+        .home-photo-circle img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .home-title {
+          font-size: 2.5rem;
+          font-weight: 800;
+          margin-bottom: 1rem;
+        }
+        .home-subtitle {
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: var(--text);
+          margin-bottom: 1.5rem;
+        }
+        .home-cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .home-skill-icons-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+          gap: 1.5rem;
+          align-items: center;
+        }
+
+        @media (max-width: 768px) {
+          .home-hero {
+            flex-direction: column-reverse;
+            text-align: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+          }
+          .home-hero-text {
+            min-width: 0;
+            width: 100%;
+          }
+          .home-title {
+            font-size: 2rem;
+          }
+          .home-subtitle {
+            font-size: 1.05rem;
+          }
+          .home-photo-circle {
+            width: 180px;
+            height: 180px;
+            border-width: 6px;
+          }
+          .home-cta-btn {
+            width: 100%;
+            justify-content: center;
+          }
+          .home-skill-icons-grid {
+            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+            gap: 1rem;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .home-title {
+            font-size: 1.65rem;
+          }
+          .home-photo-circle {
+            width: 150px;
+            height: 150px;
+          }
+        }
+      `}</style>
+
       <div className="page-container" style={{ flex: 1 }}>
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between', 
-          gap: '4rem', 
-          flexWrap: 'wrap',
-          marginBottom: '4rem'
-        }}>
-          
-          <div style={{ flex: '1.5', minWidth: '390px' }}>
-            <h1 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '1rem' }}>
+        <div className="home-hero">
+          <div className="home-hero-text">
+            <h1 className="home-title">
               Hi, I'm <span style={{ color: 'var(--btn-text)' }}>Kris Elaine S. Bautista</span>
             </h1>
-            <p style={{ fontSize: '1.2rem', fontWeight: '600', color: 'var(--text)', marginBottom: '1.5rem' }}>
+            <p className="home-subtitle">
               4th Year BSIT Student | Aspiring Web Developer
             </p>
             <p style={{ lineHeight: '1.8', opacity: 0.9, marginBottom: '2rem' }}>
               I'm an IT student and tech enthusiast with a passion for web development, software engineering, and IT support. 
               I love solving technical challenges and building efficient solutions from the ground up.
             </p>
-            
+
             <button
-              className="btn-primary"
-              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
-              onClick={() => navigate("/projects")} // This will now work
-              >
+              className="btn-primary home-cta-btn"
+              onClick={() => navigate("/projects")}
+            >
               View Projects
               <i className="fa-solid fa-arrow-right"></i>
             </button>
-            
           </div>
 
-          <div style={{ flex: '1', display: 'flex', justifyContent: 'center', minWidth: '300px' }}>
-            <div style={{ 
-              width: '250px', 
-              maxWidth: '250px', 
-              borderRadius: '100%', 
-              overflow: 'hidden', 
-              border: '8px solid var(--border)',
-              boxShadow: '0 20px 40px var(--shadow)'
-            }}>
-              <img src={pic} alt="Kris Elaine" style={{ width: '100%', display: 'block' }} />
+          <div className="home-hero-photo-wrap">
+            <div className="home-photo-circle">
+              <img src={pic} alt="Kris Elaine" />
             </div>
           </div>
         </div>
@@ -94,13 +175,8 @@ const Home = () => {
               </span>
             ))}
           </div>
-          
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(50px, 1fr))', 
-            gap: '1.5rem',
-            alignItems: 'center' 
-          }}>
+
+          <div className="home-skill-icons-grid">
             {skillIcons.map((icon, idx) => (
               <a key={idx} href={icon.href} target="_blank" rel="noreferrer" style={{ transition: 'transform 0.2s' }}>
                 <img src={icon.src} alt={icon.alt} style={{ width: '100%', maxWidth: '45px', height: 'auto' }} 

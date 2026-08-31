@@ -1,139 +1,1082 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
-/* 1. MASTER VARIABLES */
+
+/* =========================================================
+   1. THEME VARIABLES
+========================================================= */
+
 :root {
-  /* Light Mode (Coastal Palette) */
-  --bg: #FFFBF1;
-  --nav-bg: #80A1BA;
-  --card: #a6ddfd;
+
+  /* ---------------------------------------------------------
+     LIGHT MODE
+  --------------------------------------------------------- */
+
+  /* Soft icy blue background */
+  --bg: #EAF3F8;
+
+  /* Navigation */
+  --nav-bg: #6F91AA;
+
+  /* Cards */
+  --card: #B8DDF0;
+
+  /* Main text */
   --text: #334155;
-  --border: #CBDCEB;
-  --btn-bg: #99c3e6;
-  --btn-text: #0c0c0ca9;
-  --footer-bg: hsl(207, 86%, 80%);
-  
-  /* DARK SHADOW for White/Light backgrounds */
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
-  --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+
+  /* Borders */
+  --border: #C5DCE9;
+
+  /* Buttons */
+  --btn-bg: #99C3E6;
+
+  --btn-text: #243447;
+
+  /* Footer */
+  --footer-bg: #C5E2F4;
+
+
+  /* ---------------------------------------------------------
+     LIVE LIGHT BACKGROUND COLORS
+  --------------------------------------------------------- */
+
+  --orb-1: rgba(153, 195, 230, 0.65);
+
+  --orb-2: rgba(128, 161, 186, 0.55);
+
+  --orb-3: rgba(166, 221, 253, 0.65);
+
+  --orb-4: rgba(190, 215, 235, 0.60);
+
+
+  /* ---------------------------------------------------------
+     LIGHT SHADOWS
+  --------------------------------------------------------- */
+
+  --shadow:
+    0 10px 30px rgba(51, 65, 85, 0.12);
+
+  --hover-shadow:
+    0 15px 40px rgba(51, 65, 85, 0.20);
 }
 
-/* 2. DARK MODE OVERRIDES */
+
+/* =========================================================
+   2. DARK MODE
+========================================================= */
+
 body.dark {
-  --bg: #39065A;
-  --text: #EA0599;
+
+  /* ---------------------------------------------------------
+     DARK COLORS
+  --------------------------------------------------------- */
+
+  --bg: #190021;
+
+  --nav-bg: #5412A8;
+
   --card: #6A0572;
+
+  --text: #EA0599;
+
   --border: #9A0F98;
+
   --btn-bg: #EA0599;
-  --btn-text: #ffffff;
-  --footer-bg: #6A0572; 
-  
-  /* WHITE/GLOW SHADOW for Dark backgrounds */
-  --shadow: 0 10px 30px rgb(0, 0, 0); 
-  --hover-shadow: 0 15px 40px rgba(255, 255, 255, 0.15);
+
+  --btn-text: #FFFFFF;
+
+  --footer-bg: #6A0572;
+
+
+  /* ---------------------------------------------------------
+     LIVE DARK BACKGROUND COLORS
+  --------------------------------------------------------- */
+
+  --orb-1: rgba(234, 5, 153, 0.48);
+
+  --orb-2: rgba(106, 5, 114, 0.58);
+
+  --orb-3: rgba(84, 18, 168, 0.58);
+
+  --orb-4: rgba(154, 15, 152, 0.48);
+
+
+  /* ---------------------------------------------------------
+     DARK SHADOWS
+  --------------------------------------------------------- */
+
+  --shadow:
+    0 10px 30px rgba(0, 0, 0, 0.60);
+
+  --hover-shadow:
+    0 15px 40px rgba(255, 47, 208, 0.18);
 }
 
-/* 3. CORE RESET & BODY */
-html, body {
+
+/* =========================================================
+   3. CORE RESET
+========================================================= */
+
+html,
+body {
+
   margin: 0;
+
   padding: 0;
+
   width: 100%;
+
   min-height: 100vh;
-  background-color: var(--bg);
+
+  font-family:
+    'Inter',
+    'Poppins',
+    sans-serif;
+
   color: var(--text);
-  font-family: 'Inter', 'Poppins', sans-serif;
-  transition: background 0.3s ease, color 0.3s ease;
+
+  background-color: var(--bg);
+
+  overflow-x: hidden;
+
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease;
+}
+
+
+/* =========================================================
+   4. ROOT
+========================================================= */
+
+#root {
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-height: 100vh;
+
+  background: transparent;
+
+  isolation: isolate;
+
   overflow-x: hidden;
 }
 
-/* 4. SHARED PAGE LAYOUT */
-section, .page-container {
-  padding: 5rem 10% 2rem 10%;
-  max-width: 1400px;
-  margin: 0 auto;
-  box-sizing: border-box;
+
+/* =========================================================
+   5. LIVE ANIMATED BACKGROUND
+========================================================= */
+
+/*
+   Main animated aurora layer.
+
+   The four gradients move around the entire screen.
+*/
+
+#root::before {
+
+  content: '';
+
+  position: fixed;
+
+  inset: -30%;
+
+  width: 160%;
+
+  height: 160%;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+
+  background:
+
+    /* TOP LEFT */
+    radial-gradient(
+      circle at 15% 20%,
+      var(--orb-1) 0%,
+      transparent 22%
+    ),
+
+    /* TOP RIGHT */
+    radial-gradient(
+      circle at 85% 15%,
+      var(--orb-2) 0%,
+      transparent 24%
+    ),
+
+    /* BOTTOM RIGHT */
+    radial-gradient(
+      circle at 75% 75%,
+      var(--orb-3) 0%,
+      transparent 25%
+    ),
+
+    /* BOTTOM LEFT */
+    radial-gradient(
+      circle at 20% 85%,
+      var(--orb-4) 0%,
+      transparent 23%
+    );
+
+
+  filter:
+    blur(70px);
+
+  animation:
+    liveAurora
+    14s
+    ease-in-out
+    infinite
+    alternate;
+
+  will-change:
+    transform;
+
+  transition:
+    background 0.8s ease;
 }
 
-/* 5. TITLES & HEADERS */
-h1, h2, h3 {
-  margin: 0;
-  color: var(--btn-text);
+
+/* =========================================================
+   6. FLOATING CENTER GLOW
+========================================================= */
+
+/*
+   Independent center glow.
+
+   This keeps the middle of the website from looking empty.
+*/
+
+#root::after {
+
+  content: '';
+
+  position: fixed;
+
+  width: 650px;
+
+  height: 650px;
+
+  top: 20%;
+
+  left: 30%;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+
+  background:
+
+    radial-gradient(
+      circle,
+      var(--orb-3) 0%,
+      var(--orb-1) 25%,
+      transparent 70%
+    );
+
+
+  filter:
+    blur(100px);
+
+  opacity:
+    0.65;
+
+  animation:
+    floatingGlow
+    11s
+    ease-in-out
+    infinite
+    alternate;
+
+  will-change:
+    transform;
+
+  transition:
+    background 0.8s ease,
+    opacity 0.8s ease;
 }
+
+
+/* =========================================================
+   7. MAIN AURORA ANIMATION
+========================================================= */
+
+@keyframes liveAurora {
+
+  0% {
+
+    transform:
+      translate3d(-5%, -4%, 0)
+      scale(1);
+
+  }
+
+
+  20% {
+
+    transform:
+      translate3d(4%, 3%, 0)
+      scale(1.05);
+
+  }
+
+
+  40% {
+
+    transform:
+      translate3d(-2%, 7%, 0)
+      scale(1.10);
+
+  }
+
+
+  60% {
+
+    transform:
+      translate3d(7%, -2%, 0)
+      scale(1.06);
+
+  }
+
+
+  80% {
+
+    transform:
+      translate3d(-6%, 4%, 0)
+      scale(1.12);
+
+  }
+
+
+  100% {
+
+    transform:
+      translate3d(3%, -5%, 0)
+      scale(1);
+
+  }
+}
+
+
+/* =========================================================
+   8. CENTER GLOW ANIMATION
+========================================================= */
+
+@keyframes floatingGlow {
+
+  0% {
+
+    transform:
+      translate3d(-180px, -100px, 0)
+      scale(0.75);
+
+  }
+
+
+  25% {
+
+    transform:
+      translate3d(160px, 80px, 0)
+      scale(1.10);
+
+  }
+
+
+  50% {
+
+    transform:
+      translate3d(260px, 300px, 0)
+      scale(0.85);
+
+  }
+
+
+  75% {
+
+    transform:
+      translate3d(-250px, 220px, 0)
+      scale(1.20);
+
+  }
+
+
+  100% {
+
+    transform:
+      translate3d(-100px, -150px, 0)
+      scale(0.80);
+
+  }
+}
+
+
+/* =========================================================
+   9. PAGE LAYOUT
+========================================================= */
+
+section,
+.page-container {
+
+  position: relative;
+
+  padding:
+    5rem
+    10%
+    2rem
+    10%;
+
+  max-width:
+    1400px;
+
+  margin:
+    0 auto;
+
+  box-sizing:
+    border-box;
+
+  background:
+    transparent;
+}
+
+
+/* =========================================================
+   10. TITLES
+========================================================= */
+
+h1,
+h2,
+h3 {
+
+  margin:
+    0;
+
+  color:
+    var(--btn-text);
+
+  transition:
+    color 0.5s ease;
+}
+
 
 .title-underline {
-  width: 60px;
-  height: 4px;
-  background: var(--nav-bg);
-  margin-bottom: 2rem;
-  border-radius: 2px;
+
+  width:
+    60px;
+
+  height:
+    4px;
+
+  background:
+    var(--nav-bg);
+
+  margin-bottom:
+    2rem;
+
+  border-radius:
+    2px;
+
+  transition:
+    background-color 0.5s ease;
 }
 
-/* 6. GLOBAL BUTTON STYLES */
+
+/* =========================================================
+   11. PRIMARY BUTTON
+========================================================= */
+
 .btn-primary {
-  background-color: var(--btn-bg);
-  color: var(--btn-text);
-  border: none;
-  padding: 12px 28px;
-  border-radius: 10px;
-  font-weight: 800;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow); /* Added shadow to button too */
+
+  background-color:
+    var(--btn-bg);
+
+  color:
+    var(--btn-text);
+
+  border:
+    none;
+
+  padding:
+    12px 28px;
+
+  border-radius:
+    10px;
+
+  font-weight:
+    800;
+
+  font-family:
+    'Inter',
+    sans-serif;
+
+  cursor:
+    pointer;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  text-decoration:
+    none;
+
+  transition:
+    all 0.3s ease;
+
+  box-shadow:
+    var(--shadow);
 }
+
 
 .btn-primary:hover {
-  filter: brightness(0.95);
-  transform: translateY(-2px);
-  box-shadow: var(--hover-shadow);
+
+  filter:
+    brightness(0.95);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    var(--hover-shadow);
 }
+
+
+/* =========================================================
+   12. SECONDARY BUTTON
+========================================================= */
 
 .btn-secondary {
-  background: transparent;
-  border: 2px solid var(--btn-text);
-  color: var(--btn-text);
-  padding: 12px 28px;
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
+
+  background:
+    transparent;
+
+  border:
+    2px solid var(--btn-text);
+
+  color:
+    var(--btn-text);
+
+  padding:
+    12px 28px;
+
+  border-radius:
+    10px;
+
+  font-weight:
+    600;
+
+  text-decoration:
+    none;
+
+  transition:
+    all 0.3s ease;
 }
+
 
 .btn-secondary:hover {
-  background: var(--border);
+
+  background:
+    var(--border);
 }
 
-/* 7. SHARED CARD STYLE */
+
+/* =========================================================
+   13. CONTENT CARDS
+========================================================= */
+
 .content-card {
-  background-color: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  /* Updated to use our dynamic shadow variables */
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+
+  background-color:
+    var(--card);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    15px;
+
+  padding:
+    2rem;
+
+  margin-bottom:
+    2rem;
+
+  box-shadow:
+    var(--shadow);
+
+  transition:
+
+    transform 0.3s ease,
+
+    background-color 0.5s ease,
+
+    border-color 0.5s ease,
+
+    box-shadow 0.3s ease;
 }
+
 
 .content-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--hover-shadow);
+
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    var(--hover-shadow);
 }
 
-/* Fix for footer positioning */
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+
+/* =========================================================
+   14. FOOTER
+========================================================= */
+
 .footer-link {
-  transition: color 0.2s ease;
+
+  transition:
+    color 0.2s ease;
 }
+
 
 .footer-link:hover {
-  color: var(--btn-text) !important; /* Uses your theme's primary accent color */
+
+  color:
+    var(--btn-text) !important;
+}
+
+
+/* =========================================================
+   15. CONTACT / SOCIAL CARDS
+========================================================= */
+
+.contact-info-card {
+
+  background:
+    var(--card);
+
+  border:
+    1px solid var(--border);
+
+  box-shadow:
+    var(--shadow);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.5s ease;
+}
+
+
+.contact-info-card:hover {
+
+  transform:
+    translateY(-6px);
+
+  box-shadow:
+    var(--hover-shadow);
+
+  border-color:
+    var(--btn-bg);
+}
+
+
+/* =========================================================
+   16. PROJECT GRID
+========================================================= */
+
+.project-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(320px, 1fr)
+    );
+
+  gap:
+    2rem;
+}
+
+
+/* =========================================================
+   17. PROJECT CARDS
+========================================================= */
+
+.project-card {
+
+  background:
+    var(--card);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    15px;
+
+  overflow:
+    hidden;
+
+  box-shadow:
+    var(--shadow);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.5s ease;
+
+  cursor:
+    pointer;
+}
+
+
+.project-card:hover {
+
+  transform:
+    translateY(-6px);
+
+  box-shadow:
+    var(--hover-shadow);
+
+  border-color:
+    var(--btn-bg);
+}
+
+
+/* =========================================================
+   18. PROJECT IMAGE
+========================================================= */
+
+.project-card-image {
+
+  width:
+    100%;
+
+  height:
+    220px;
+
+  object-fit:
+    cover;
+
+  display:
+    block;
+
+  background:
+    var(--border);
+}
+
+
+/* =========================================================
+   19. PROJECT CARD CONTENT
+========================================================= */
+
+.project-card-content {
+
+  padding:
+    1.5rem;
+}
+
+
+.project-card-content h3 {
+
+  color:
+    var(--btn-text);
+
+  margin-bottom:
+    0.75rem;
+}
+
+
+.project-card-content p {
+
+  color:
+    var(--text);
+
+  line-height:
+    1.6;
+}
+
+
+/* =========================================================
+   20. TECH TAGS
+========================================================= */
+
+.tech-tag {
+
+  font-size:
+    0.75rem;
+
+  padding:
+    4px 10px;
+
+  background:
+    var(--border);
+
+  color:
+    var(--text);
+
+  border-radius:
+    15px;
+
+  font-weight:
+    600;
+}
+
+
+/* =========================================================
+   21. MODAL
+========================================================= */
+
+.project-modal-overlay {
+
+  position:
+    fixed;
+
+  inset:
+    0;
+
+  z-index:
+    9999;
+
+  background:
+    rgba(0, 0, 0, 0.75);
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+  padding:
+    1rem;
+}
+
+
+/* =========================================================
+   22. MODAL CONTAINER
+========================================================= */
+
+.project-modal {
+
+  background:
+    var(--bg);
+
+  color:
+    var(--text);
+
+  border-radius:
+    18px;
+
+  max-width:
+    820px;
+
+  width:
+    100%;
+
+  max-height:
+    90vh;
+
+  overflow-y:
+    auto;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.4);
+
+  animation:
+    modalIn 0.25s ease;
+}
+
+
+/* =========================================================
+   23. MODAL ANIMATION
+========================================================= */
+
+@keyframes modalIn {
+
+  from {
+
+    opacity:
+      0;
+
+    transform:
+      translateY(24px)
+      scale(0.97);
+  }
+
+  to {
+
+    opacity:
+      1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   24. MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* -------------------------------------------------------
+     LIVE BACKGROUND
+  ------------------------------------------------------- */
+
+  #root::before {
+
+    inset:
+      -40%;
+
+    width:
+      180%;
+
+    height:
+      180%;
+
+    filter:
+      blur(55px);
+
+    animation-duration:
+      18s;
+  }
+
+
+  #root::after {
+
+    width:
+      380px;
+
+    height:
+      380px;
+
+    filter:
+      blur(75px);
+
+    animation-duration:
+      14s;
+
+    opacity:
+      0.55;
+  }
+
+
+  /* -------------------------------------------------------
+     PAGE SPACING
+  ------------------------------------------------------- */
+
+  section,
+  .page-container {
+
+    padding-left:
+      6%;
+
+    padding-right:
+      6%;
+  }
+
+
+  /* -------------------------------------------------------
+     PROJECT GRID
+  ------------------------------------------------------- */
+
+  .project-grid {
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      1.25rem;
+  }
+
+
+  /* -------------------------------------------------------
+     PROJECT IMAGE
+  ------------------------------------------------------- */
+
+  .project-card-image {
+
+    height:
+      200px;
+  }
+}
+
+
+/* =========================================================
+   25. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  section,
+  .page-container {
+
+    padding-left:
+      5%;
+
+    padding-right:
+      5%;
+  }
+
+
+  #root::after {
+
+    width:
+      300px;
+
+    height:
+      300px;
+
+    filter:
+      blur(65px);
+  }
+
+
+  .project-card-image {
+
+    height:
+      180px;
+  }
+}
+
+
+/* =========================================================
+   26. REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #root::before,
+  #root::after {
+
+    animation:
+      none;
+  }
+
+  .content-card,
+  .project-card,
+  .contact-info-card {
+
+    transition:
+      none;
+  }
 }
